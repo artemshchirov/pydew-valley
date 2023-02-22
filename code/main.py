@@ -10,19 +10,16 @@ class Game:
     pygame.display.set_caption(WINDOW_TITLE)
     self.clock = pygame.time.Clock()
     self.level = Level()
-    
-    
+  
+  
   def run(self):
-    prev_time = time.time()
     while True:
-      dt = time.time() - prev_time
-      prev_time = time.time()
-      
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
           pygame.quit()
           sys.exit()
       
+      dt = self.clock.tick(FPS) / 1000
       self.level.run(dt)
       pygame.display.update()
 

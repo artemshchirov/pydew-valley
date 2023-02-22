@@ -1,9 +1,11 @@
 from pygame.math import Vector2
 
-# screen
 WINDOW_TITLE = 'Pydew Valley'
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
+FPS = 120
+
+# screen
+SCREEN_WIDTH = 960
+SCREEN_HEIGHT = 540
 TILE_SIZE = 64
 
 # overlay position
