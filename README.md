@@ -13,3 +13,33 @@ pip install pygame
 cd pydew-valley
 python code/main.py
 ```
+
+## TODO
+
+- [x] Setup
+- [x] Creating the basic player
+- [x] Importing the player graphics
+- [ ] Animating the player
+- [ ] Tool use
+- [ ] Switching between tools
+- [ ] Creating the overlay
+- [ ] Starting the camera and importing the floor
+- [ ] Importing all elements and faking more 3D
+- [ ] Collisions
+- [ ] Working on the trees
+- [ ] Particles
+- [ ] Player inventory
+- [ ] Restarting the day
+- [ ] Starting the soil
+- [ ] Soil patch graphics
+- [ ] Watering logic
+- [ ] Rain
+- [ ] Creating the plants
+- [ ] Harvesting
+- [ ] Daytime transition
+- [ ] The merchant
+- [ ] Audio
+
+### FIX
+
+- [ ] Relative path
