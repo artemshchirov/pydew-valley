@@ -22,7 +22,7 @@ python code/main.py
 - [x] Animating the player
 - [x] Tool use
 - [x] Switching between tools
-- [ ] Creating the overlay
+- [x] Creating the overlay
 - [ ] Starting the camera and importing the floor
 - [ ] Importing all elements and faking more 3D
 - [ ] Collisions
