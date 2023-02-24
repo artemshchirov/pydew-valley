@@ -19,7 +19,7 @@ python code/main.py
 - [x] Setup
 - [x] Creating the basic player
 - [x] Importing the player graphics
-- [ ] Animating the player
+- [x] Animating the player
 - [ ] Tool use
 - [ ] Switching between tools
 - [ ] Creating the overlay
@@ -39,7 +39,3 @@ python code/main.py
 - [ ] Daytime transition
 - [ ] The merchant
 - [ ] Audio
-
-### FIX
-
-- [ ] Relative path
