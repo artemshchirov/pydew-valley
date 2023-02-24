@@ -21,7 +21,7 @@ python code/main.py
 - [x] Importing the player graphics
 - [x] Animating the player
 - [x] Tool use
-- [ ] Switching between tools
+- [x] Switching between tools
 - [ ] Creating the overlay
 - [ ] Starting the camera and importing the floor
 - [ ] Importing all elements and faking more 3D
