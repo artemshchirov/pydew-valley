@@ -24,7 +24,7 @@ python code/main.py
 - [x] Switching between tools
 - [x] Creating the overlay
 - [x] Starting the camera and importing the floor
-- [ ] Importing all elements and faking more 3D
+- [x] Importing all elements and faking more 3D
 - [ ] Collisions
 - [ ] Working on the trees
 - [ ] Particles
