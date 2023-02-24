@@ -16,7 +16,7 @@ class Level:
   
   
   def setup(self):
-    self.Player = Player((640,360), self.all_sprites)
+    self.Player = Player((480,270), self.all_sprites)
   
   
   def run(self, dt):

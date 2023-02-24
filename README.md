@@ -20,7 +20,7 @@ python code/main.py
 - [x] Creating the basic player
 - [x] Importing the player graphics
 - [x] Animating the player
-- [ ] Tool use
+- [x] Tool use
 - [ ] Switching between tools
 - [ ] Creating the overlay
 - [ ] Starting the camera and importing the floor
