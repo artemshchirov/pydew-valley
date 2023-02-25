@@ -46,7 +46,12 @@ class Level:
     
     # trees
     for obj in tmx_data.get_layer_by_name('Trees'):
-      Tree((obj.x,obj.y), obj.image, [self.all_sprites, self.collision_sprites, self.tree_sprites], obj.name)
+      Tree(
+        pos=(obj.x,obj.y), 
+        surf=obj.image, 
+        groups=[self.all_sprites, self.collision_sprites, self.tree_sprites], 
+        name=obj.name,
+        player_add=self.player_add)
       
     # wildflowers
     for obj in tmx_data.get_layer_by_name('Decoration'):
@@ -70,8 +75,11 @@ class Level:
       pos=(0,0), 
       surf=pygame.image.load(path_floor).convert_alpha(),
       groups=self.all_sprites,
-      z=LAYERS['ground']
-    )
+      z=LAYERS['ground'])
+  
+  
+  def player_add(self, item, amount=1):
+    self.player.item_inventory[item] += amount
   
   
   def run(self, dt):
