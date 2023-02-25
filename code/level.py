@@ -7,8 +7,6 @@ from overlay import Overlay
 from sprites import Generic, Water, Wildflower, Tree
 from pytmx.util_pygame import load_pygame
 
-
-
 class Level:
   def __init__(self):
     # get the display surface
@@ -16,6 +14,7 @@ class Level:
     
     # sprite groups
     self.all_sprites = CameraGroup()
+    self.collision_sprites = pygame.sprite.Group()
     
     self.setup()
     self.overlay = Overlay(self.player)
@@ -36,7 +35,7 @@ class Level:
     
     # fence
     for x, y, surf in tmx_data.get_layer_by_name('Fence').tiles():
-      Generic((x*TILE_SIZE,y*TILE_SIZE), surf, self.all_sprites)
+      Generic((x*TILE_SIZE,y*TILE_SIZE), surf, [self.all_sprites, self.collision_sprites])
       
     # water
     water_path = find_path('../graphics/water')
@@ -46,12 +45,20 @@ class Level:
     
     # trees
     for obj in tmx_data.get_layer_by_name('Trees'):
-      Tree((obj.x,obj.y), obj.image, self.all_sprites, obj.name)
+      Tree((obj.x,obj.y), obj.image, [self.all_sprites, self.collision_sprites], obj.name)
       
     # wildflowers
     for obj in tmx_data.get_layer_by_name('Decoration'):
-      Wildflower((obj.x,obj.y), obj.image, self.all_sprites)
+      Wildflower((obj.x,obj.y), obj.image, [self.all_sprites, self.collision_sprites])
 
+    # collision tiles
+    for x, y, surf in tmx_data.get_layer_by_name('Collision').tiles():
+      Generic((x*TILE_SIZE,y*TILE_SIZE), pygame.Surface((TILE_SIZE, TILE_SIZE)), self.collision_sprites)
+    
+    # Player
+    for obj in tmx_data.get_layer_by_name('Player'):
+      if obj.name == 'Start':
+        self.player = Player((obj.x,obj.y), self.all_sprites, self.collision_sprites)
     
     path_floor = find_path('../graphics/world/ground.png')
     Generic(
@@ -60,8 +67,6 @@ class Level:
       groups=self.all_sprites,
       z=LAYERS['ground']
     )
-    
-    self.player = Player((480,270), self.all_sprites)
   
   
   def run(self, dt):
@@ -78,7 +83,7 @@ class CameraGroup(pygame.sprite.Group):
     super().__init__()
     self.display_surface = pygame.display.get_surface()
     self.offset = pygame.math.Vector2()
-    
+  
 
   def custom_draw(self, player):
     self.offset.x = player.rect.centerx - SCREEN_WIDTH / 2
