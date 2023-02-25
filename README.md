@@ -25,11 +25,11 @@ python code/main.py
 - [x] Creating the overlay
 - [x] Starting the camera and importing the floor
 - [x] Importing all elements and faking more 3D
-- [ ] Collisions
-- [ ] Working on the trees
-- [ ] Particles
-- [ ] Player inventory
-- [ ] Restarting the day
+- [x] Collisions
+- [x] Working on the trees
+- [x] Particles
+- [x] Player inventory
+- [x] Restarting the day
 - [ ] Starting the soil
 - [ ] Soil patch graphics
 - [ ] Watering logic
