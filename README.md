@@ -8,7 +8,7 @@ The game was also made in Tiled.
 ## Run project locally
 
 ```bash
-git clone https://github.com/artemshchirov/pydew-vallue.git
+git clone https://github.com/artemshchirov/pydew-valley.git
 pip install pygame
 cd pydew-valley
 python code/main.py
@@ -33,7 +33,7 @@ python code/main.py
 - [x] Starting the soil
 - [x] Soil patch graphics
 - [x] Watering logic
-- [ ] Rain
+- [x] Rain
 - [ ] Creating the plants
 - [ ] Harvesting
 - [ ] Daytime transition

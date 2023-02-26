@@ -8,6 +8,8 @@ from sprites import Generic, Water, Wildflower, Tree, Interaction
 from pytmx.util_pygame import load_pygame
 from transition import Transition
 from soil import SoilLayer
+from sky import Rain
+from random import randint
 
 
 class Level:
@@ -26,8 +28,13 @@ class Level:
         self.overlay = Overlay(self.player)
         self.transition = Transition(self.reset, self.player)
 
+        # sky
+        self.rain = Rain(self.all_sprites)
+        self.raining = randint(0, 10) > 7
+        self.soil_layer.raining = self.raining
+
     def setup(self):
-        path_map = get_file_path('../data/map.tmx')
+        path_map = get_path('../data/map.tmx')
         tmx_data = load_pygame(path_map)
 
         # house
@@ -46,7 +53,7 @@ class Level:
                     [self.all_sprites, self.collision_sprites])
 
         # water
-        water_path = get_file_path('../graphics/water')
+        water_path = get_path('../graphics/water')
         water_frames = import_folder(water_path)
         for x, y, surf in tmx_data.get_layer_by_name('Water').tiles():
             Water((x*TILE_SIZE, y*TILE_SIZE), water_frames, self.all_sprites)
@@ -89,7 +96,7 @@ class Level:
                     groups=self.interaction_sprites,
                     name=obj.name)
 
-        path_floor = get_file_path('../graphics/world/ground.png')
+        path_floor = get_path('../graphics/world/ground.png')
         Generic(
             pos=(0, 0),
             surf=pygame.image.load(path_floor).convert_alpha(),
@@ -100,9 +107,12 @@ class Level:
         self.player.item_inventory[item] += amount
 
     def reset(self):
-
         # soil
         self.soil_layer.remove_water()
+        self.raining = randint(0, 10) > 7
+        self.soil_layer.raining = self.raining
+        if self.raining:
+            self.soil_layer.water_all()
 
         # apples on the trees
         for tree in self.tree_sprites.sprites():
@@ -117,6 +127,11 @@ class Level:
 
         self.overlay.display()
 
+        # rain
+        if self.raining:
+            self.rain.update()
+
+        # transition overlay
         if self.player.sleep:
             self.transition.play()
 

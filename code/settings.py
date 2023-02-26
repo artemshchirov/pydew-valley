@@ -4,8 +4,8 @@ WINDOW_TITLE = 'Pydew Valley'
 FPS = 60
 
 # screen
-SCREEN_WIDTH = 960
-SCREEN_HEIGHT = 540
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 768
 TILE_SIZE = 64
 
 # overlay position

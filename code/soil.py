@@ -23,28 +23,27 @@ class WaterTile(pygame.sprite.Sprite):
 
 class SoilLayer:
     def __init__(self, all_sprites):
-
         # sprite groups
         self.all_sprites = all_sprites
         self.soil_sprites = pygame.sprite.Group()
         self.water_sprites = pygame.sprite.Group()
 
         # graphics
-        soils_path = get_file_path('../graphics/soil')
+        soils_path = get_path('../graphics/soil')
+        water_path = get_path('../graphics/soil_water')
         self.soil_surfs = import_folder_dict(soils_path)
-        water_path = get_file_path('../graphics/soil_water')
         self.water_surfs = import_folder(water_path)
 
         self.create_soil_grid()
         self.create_hit_rects()
 
     def create_soil_grid(self):
-        floor_path = get_file_path('../graphics/world/ground.png')
-        ground = pygame.image.load(floor_path)
+        ground_path = get_path('../graphics/world/ground.png')
+        ground = pygame.image.load(ground_path)
         h_tiles, v_tiles = ground.get_width() // TILE_SIZE, ground.get_height() // TILE_SIZE
 
         self.grid = [[[] for col in range(h_tiles)] for row in range(v_tiles)]
-        map_tmx = get_file_path('../data/map.tmx')
+        map_tmx = get_path('../data/map.tmx')
         for x, y, _ in load_pygame(map_tmx).get_layer_by_name('Farmable').tiles():
             self.grid[y][x].append('F')
 
@@ -67,6 +66,8 @@ class SoilLayer:
                 if 'F' in self.grid[y][x]:
                     self.grid[y][x].append('X')
                     self.create_soil_tiles()
+                    if self.raining:
+                        self.water_all()
 
     def water(self, target_pos):
         for soil_sprite in self.soil_sprites.sprites():
@@ -77,13 +78,21 @@ class SoilLayer:
 
                 pos = soil_sprite.rect.topleft
                 surf = choice(self.water_surfs)
-                WaterTile(
-                    pos=pos,
-                    surf=surf,
-                    groups=[self.all_sprites, self.water_sprites])
+                WaterTile(pos, surf, [self.all_sprites, self.water_sprites])
+
+    def water_all(self):
+        for index_row, row in enumerate(self.grid):
+            for index_col, cell in enumerate(row):
+                if 'X' in cell and 'W' not in cell:
+                    cell.append('W')
+
+                    x = index_col * TILE_SIZE
+                    y = index_row * TILE_SIZE
+                    surf = choice(self.water_surfs)
+                    WaterTile((x, y), surf,
+                              [self.all_sprites, self.water_sprites])
 
     def remove_water(self):
-        
         # destroy all water sprites
         for sprite in self.water_sprites.sprites():
             sprite.kill()
