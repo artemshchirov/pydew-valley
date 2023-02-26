@@ -1,4 +1,4 @@
-# Python 🌾 Pydew Vallue 🌾 Pygame
+# Python 🌾 Pydew Valley 🌾 Pygame
 
 ## About project
 
@@ -32,7 +32,7 @@ python code/main.py
 - [x] Restarting the day
 - [x] Starting the soil
 - [x] Soil patch graphics
-- [ ] Watering logic
+- [x] Watering logic
 - [ ] Rain
 - [ ] Creating the plants
 - [ ] Harvesting
