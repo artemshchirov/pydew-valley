@@ -7,6 +7,7 @@ from overlay import Overlay
 from sprites import Generic, Water, Wildflower, Tree, Interaction
 from pytmx.util_pygame import load_pygame
 from transition import Transition
+from soil import SoilLayer
 
 
 class Level:
@@ -20,12 +21,13 @@ class Level:
         self.tree_sprites = pygame.sprite.Group()
         self.interaction_sprites = pygame.sprite.Group()
 
+        self.soil_layer = SoilLayer(self.all_sprites)
         self.setup()
         self.overlay = Overlay(self.player)
         self.transition = Transition(self.reset, self.player)
 
     def setup(self):
-        path_map = find_path('../data/map.tmx')
+        path_map = get_file_path('../data/map.tmx')
         tmx_data = load_pygame(path_map)
 
         # house
@@ -44,7 +46,7 @@ class Level:
                     [self.all_sprites, self.collision_sprites])
 
         # water
-        water_path = find_path('../graphics/water')
+        water_path = get_file_path('../graphics/water')
         water_frames = import_folder(water_path)
         for x, y, surf in tmx_data.get_layer_by_name('Water').tiles():
             Water((x*TILE_SIZE, y*TILE_SIZE), water_frames, self.all_sprites)
@@ -77,7 +79,8 @@ class Level:
                     group=self.all_sprites,
                     collision_sprites=self.collision_sprites,
                     tree_sprites=self.tree_sprites,
-                    interaction=self.interaction_sprites)
+                    interaction=self.interaction_sprites,
+                    soil_layer=self.soil_layer)
 
             if obj.name == 'Bed':
                 Interaction(
@@ -86,7 +89,7 @@ class Level:
                     groups=self.interaction_sprites,
                     name=obj.name)
 
-        path_floor = find_path('../graphics/world/ground.png')
+        path_floor = get_file_path('../graphics/world/ground.png')
         Generic(
             pos=(0, 0),
             surf=pygame.image.load(path_floor).convert_alpha(),

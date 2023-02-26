@@ -1,7 +1,7 @@
 from pygame.math import Vector2
 
 WINDOW_TITLE = 'Pydew Valley'
-FPS = 120
+FPS = 60
 
 # screen
 SCREEN_WIDTH = 960

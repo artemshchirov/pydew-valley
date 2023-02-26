@@ -1,6 +1,6 @@
 import pygame
 from settings import *
-from support import find_path
+from support import get_file_path
 from random import randint, choice
 from timer import Timer
 
@@ -79,13 +79,13 @@ class Tree(Generic):
         # tree attributes
         self.health = 5
         self.alive = True
-        stump_path = find_path(
+        stump_path = get_file_path(
             f'../graphics/stumps/{"small" if name == "Small" else "large"}.png')
         self.stump_surf = pygame.image.load(stump_path).convert_alpha()
         self.invul_timer = Timer(200)
 
         # apples
-        apple_path = find_path('../graphics/fruit/apple.png')
+        apple_path = get_file_path('../graphics/fruit/apple.png')
         self.apple_surf = pygame.image.load(apple_path)
         self.apple_pos = APPLE_POS[name]
         self.apple_sprites = pygame.sprite.Group()
