@@ -31,7 +31,7 @@ python code/main.py
 - [x] Player inventory
 - [x] Restarting the day
 - [x] Starting the soil
-- [ ] Soil patch graphics
+- [x] Soil patch graphics
 - [ ] Watering logic
 - [ ] Rain
 - [ ] Creating the plants
