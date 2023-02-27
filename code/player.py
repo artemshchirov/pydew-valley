@@ -76,7 +76,7 @@ class Player(pygame.sprite.Sprite):
             PLAYER_TOOL_OFFSET[self.status.split('_')[0]]
 
     def use_seed(self):
-        pass
+        self.soil_layer.plant_seed(self.target_pos, self.selected_seed)
 
     def import_assets(self):
         self.animations = {
@@ -167,7 +167,6 @@ class Player(pygame.sprite.Sprite):
             timer.update()
 
     def get_status(self):
-
         # idle
         if self.direction.magnitude() == 0:
             self.status = self.status.split('_')[0] + '_idle'
@@ -197,7 +196,6 @@ class Player(pygame.sprite.Sprite):
                         self.pos.y = self.hitbox.centery
 
     def move(self, dt):
-
         # normalizing a vector
         if self.direction.magnitude() > 0:
             self.direction = self.direction.normalize()

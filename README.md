@@ -34,7 +34,7 @@ python code/main.py
 - [x] Soil patch graphics
 - [x] Watering logic
 - [x] Rain
-- [ ] Creating the plants
+- [x] Creating the plants
 - [ ] Harvesting
 - [ ] Daytime transition
 - [ ] The merchant
