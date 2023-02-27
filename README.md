@@ -2,7 +2,8 @@
 
 ## About project
 
-A Stardew Valley style game in Python and Pygame. This includes farming and foraging, a day and night cycle, weather effects and a merchant.
+A Stardew Valley style game in Python and Pygame.\
+This includes farming and foraging, a day and night cycle, weather effects and a merchant.\
 The game was also made in Tiled.
 
 ## Run project locally
@@ -35,7 +36,7 @@ python code/main.py
 - [x] Watering logic
 - [x] Rain
 - [x] Creating the plants
-- [ ] Harvesting
+- [x] Harvesting
 - [ ] Daytime transition
 - [ ] The merchant
 - [ ] Audio

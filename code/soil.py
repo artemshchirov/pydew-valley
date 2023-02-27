@@ -55,7 +55,7 @@ class Plant(pygame.sprite.Sprite):
 
             if self.age >= self.max_age:
                 self.age = self.max_age
-                self.harvestable = False
+                self.harvestable = True
 
             self.image = self.frames[int(self.age)]
             self.rect = self.image.get_rect(
