@@ -37,6 +37,6 @@ python code/main.py
 - [x] Rain
 - [x] Creating the plants
 - [x] Harvesting
-- [ ] Daytime transition
+- [x] Daytime transition
 - [ ] The merchant
 - [ ] Audio
