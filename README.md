@@ -38,5 +38,5 @@ python code/main.py
 - [x] Creating the plants
 - [x] Harvesting
 - [x] Daytime transition
-- [ ] The merchant
+- [x] The merchant
 - [ ] Audio
