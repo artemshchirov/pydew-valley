@@ -15,6 +15,8 @@ cd pydew-valley
 python code/main.py
 ```
 
+Pydew Valley RPG written in Python Pygame based on [tutorial](https://www.youtube.com/watch?v=T4IX36sP_0c&ab_channel=ClearCode)
+
 ## TODO
 
 - [x] Setup
@@ -39,4 +41,10 @@ python code/main.py
 - [x] Harvesting
 - [x] Daytime transition
 - [x] The merchant
-- [ ] Audio
+- [x] Audio
+
+---
+
+- [ ] Save and load game
+- [ ] Nightime
+- [ ] New plant

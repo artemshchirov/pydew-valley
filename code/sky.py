@@ -50,11 +50,14 @@ class Drop(Generic):
 class Rain:
     def __init__(self, all_sprites):
         self.all_sprites = all_sprites
+        
         drops_path = get_path('../graphics/rain/drops')
-        floor_path = get_path('../graphics/rain/floor')
-        ground_path = get_path('../graphics/world/ground.png')
         self.rain_drops = import_folder(drops_path)
+        
+        floor_path = get_path('../graphics/rain/floor')
         self.rain_floor = import_folder(floor_path)
+        
+        ground_path = get_path('../graphics/world/ground.png')
         self.floor_w, self.floor_h = pygame.image.load(ground_path).get_size()
 
     def create_floor(self):
